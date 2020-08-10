@@ -1,0 +1,8 @@
+<div class="titulo"><h1>{{title}}</h1></div>
+<div class="grid-container">
+  <div class="grid-item" *ngFor="let titulo of itemIndice">
+    <a href="{{ titulo.ruta }}">{{ titulo.nombre }}</a>
+  </div>
+</div>
+
+<router-outlet></router-outlet>
