@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class ObservablesComponent implements OnInit {
   public observable: Observable<any>;
+  public aux : boolean;
   constructor() {
     this.observable = Observable.create(function (observer) {
       observer.next(1);
@@ -18,10 +19,12 @@ export class ObservablesComponent implements OnInit {
         observer.complete();
       }, 5000);
     });
+    this.aux=true;
   }
   ngOnInit(): void {}
 
   observableFunction() {
+    this.aux=false;
     let contenedor = document.querySelector("#resultado");
     let msg1 = document.createElement("p");
     msg1.innerHTML='Antes de la suscripción';
@@ -48,4 +51,8 @@ export class ObservablesComponent implements OnInit {
         msg5.innerHTML='Después de la suscripción';
         contenedor.appendChild(msg5);
   }
+  /*disabled(){
+    let disable = document.querySelector("#btn");
+    disable.disabled=true;
+  }*/
 }

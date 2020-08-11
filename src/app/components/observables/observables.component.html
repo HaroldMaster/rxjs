@@ -62,7 +62,7 @@ observableFunction() {
   </div>
   <div class="hijo" id="resultado">
     <h1>RESULTADO</h1>
-    <button (click)="observableFunction()">CLICK</button>
+    <button id="btn" (click)="observableFunction()" [disabled]="!aux">CLICK</button>
   </div>
 </div>
 <!--<div class="contenedor">
