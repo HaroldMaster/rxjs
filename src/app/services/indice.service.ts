@@ -7,10 +7,10 @@ export class IndiceService {
   public indice : Array<object>;
   constructor() { 
     this.indice = [
-      {nombre: "Observables",
-       ruta: "https://www.google.com"},
+      {nombre: "Observable simple",
+       ruta: "/observable"},
       {nombre: "interval y timer",
-       ruta: "https://www.fb.com"},
+       ruta: "/intervalytimer"},
       {nombre: "fromEvent",
        ruta: ""},
       {nombre: "map y filter",
