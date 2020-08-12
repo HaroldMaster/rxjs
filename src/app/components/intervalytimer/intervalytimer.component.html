@@ -1,1 +1,51 @@
-<p>intervalytimer works!</p>
+<app-volver></app-volver>
+<div class="padre">
+  <div class="hijo">
+    <h1>CODIGO COMPONENTE.TS</h1>
+    <code>
+      <textarea rows="1" cols="20" disabled>
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { interval, timer, Observable, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+
+@Component({
+    selector: 'app-intervalytimer',
+    templateUrl: './intervalytimer.component.html',
+    styleUrls: ['./intervalytimer.component.scss'],
+})
+export class IntervalytimerComponent implements OnInit {
+    public contador: any;
+    public tiempo: any;
+    public aux: boolean;
+    destroy$: Subject<boolean> = new Subject<boolean>();
+    constructor() {
+    this.aux = true;
+    this.tiempo = timer(12000);
+    this.contador = interval(1000).pipe(takeUntil(this.tiempo));
+    }
+
+    ngOnInit(): void {}
+
+    interval() {
+    this.aux = false;
+    this.contador.subscribe((n) => {
+        let resultado = document.querySelector("#resultado");
+        let msg1 = document.createElement("p");
+        msg1.innerHTML=n;
+        resultado.appendChild(msg1);
+        if (n == 10) {
+        msg1.innerHTML="Se acabo";
+        }
+    });
+    }
+}
+
+      </textarea>
+    </code>
+  </div>
+  <div class="hijo" id="resultado">
+    <h1>RESULTADO</h1>
+    <button id="btn" (click)="interval()" [disabled]="!aux">CLICK</button>
+  </div>
+</div>
+
